@@ -1,0 +1,99 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/main/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "dmarcguard"
+name = "DMARCguard"
+description.en = "Self-hosted DMARC report parser with dashboard and IMAP ingestion."
+description.fr = "Parseur DMARC auto-heberge avec dashboard et ingestion IMAP."
+version = "1.5.3~ynh1"
+maintainers = ["rungeard"]
+
+[upstream]
+license = "Apache-2.0"
+website = "https://dmarcguard.io/"
+code = "https://github.com/dmarcguardhq/dmarcguard"
+
+[integration]
+yunohost = ">= 12.1.17"
+helpers_version = "2.1"
+architectures = ["amd64", "arm64", "armhf"]
+multi_instance = true
+ldap = false
+sso = false
+disk = "120M"
+ram.build = "50M"
+ram.runtime = "150M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/dmarcguard"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "all_users"
+
+    [install.imap_host]
+    ask.en = "IMAP host (example: 127.0.0.1 or your mail domain)"
+    ask.fr = "Hote IMAP (exemple : 127.0.0.1 ou votre domaine mail)"
+    type = "string"
+
+    [install.imap_port]
+    ask.en = "IMAP port"
+    ask.fr = "Port IMAP"
+    type = "number"
+    default = 993
+
+    [install.imap_username]
+    ask.en = "IMAP username"
+    ask.fr = "Nom d'utilisateur IMAP"
+    type = "string"
+
+    [install.imap_password]
+    ask.en = "IMAP password"
+    ask.fr = "Mot de passe IMAP"
+    type = "password"
+
+    [install.imap_mailbox]
+    ask.en = "IMAP mailbox"
+    ask.fr = "Boite IMAP"
+    type = "string"
+    default = "INBOX"
+
+    [install.imap_use_tls]
+    ask.en = "Use TLS for IMAP"
+    ask.fr = "Utiliser TLS pour IMAP"
+    type = "boolean"
+    default = true
+
+[resources]
+    [resources.sources.main]
+    in_subdir = false
+    rename = "parse-dmarc.tar.gz"
+
+    amd64.url = "https://github.com/dmarcguardhq/dmarcguard/releases/download/v1.5.3/parse-dmarc_linux_amd64.tar.gz"
+    amd64.sha256 = "323607bd7c55e651a467a724d6b0ad8dfd461879fc077c08f69f103b1322459d"
+    arm64.url = "https://github.com/dmarcguardhq/dmarcguard/releases/download/v1.5.3/parse-dmarc_linux_arm64.tar.gz"
+    arm64.sha256 = "d1bd6d6283f34c44542e52587929e1f82c6003631cc56246096848aca95f37a3"
+    armhf.url = "https://github.com/dmarcguardhq/dmarcguard/releases/download/v1.5.3/parse-dmarc_linux_armv7.tar.gz"
+    armhf.sha256 = "b63f061e4b01ab0aeb8e33e31d680fd9c8a2edd92d92798a1d3198672e160f2d"
+
+    autoupdate.strategy = "latest_github_release"
+    autoupdate.asset.amd64 = "^parse-dmarc_linux_amd64.tar.gz$"
+    autoupdate.asset.arm64 = "^parse-dmarc_linux_arm64.tar.gz$"
+    autoupdate.asset.armhf = "^parse-dmarc_linux_armv7.tar.gz$"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+
+    [resources.data_dir]
