@@ -1,9 +1,9 @@
-DMARCguard est installe.
+DMARCguard est installé.
 
-Acces : <https://__DOMAIN____PATH__>
+Accès : <https://__DOMAIN____PATH__>
 
-Prochaines etapes :
+Prochaines étapes :
 
-1. Verifiez que votre adresse DMARC `rua` pointe vers la boite YunoHost dediee configuree a l'installation.
-2. Attendez les rapports agreges (souvent 24-48h).
-3. Si aucun rapport n'apparait, verifiez les logs : `sudo journalctl -u __ID__ -f`
+1. Vérifiez que votre adresse DMARC `rua` pointe vers la boîte YunoHost dédiée configurée à l'installation.
+2. Attendez les rapports agrégés (souvent 24-48h).
+3. Si aucun rapport n'apparaît, vérifiez les logs : `sudo journalctl -u __ID__ -f`

@@ -1,6 +1,6 @@
-DMARCguard a ete mis a jour.
+DMARCguard a été mis à jour.
 
-Verifiez l'etat du service :
+Vérifiez l'état du service :
 
 ```bash
 sudo systemctl status __ID__

@@ -1,3 +1,3 @@
-DMARCguard est un parseur auto-heberge de rapports DMARC agreges avec un tableau de bord integre.
+DMARCguard est un parseur auto-hébergé de rapports DMARC agrégés avec un tableau de bord intégré.
 
-L'application se connecte a une boite IMAP, recupere les rapports XML DMARC, les analyse, stocke les donnees dans SQLite et expose des statistiques web.
+L'application se connecte à une boîte IMAP, récupère les rapports XML DMARC, les analyse, stocke les données dans SQLite et expose des statistiques web.

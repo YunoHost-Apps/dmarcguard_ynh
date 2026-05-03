@@ -1,9 +1,9 @@
-DMARCguard necessite des identifiants IMAP valides pour recuperer les rapports DMARC agreges.
+DMARCguard nécessite des identifiants IMAP valides pour récupérer les rapports DMARC agrégés.
 
-Preparation avant installation :
+Préparation avant installation :
 
-1. Creez une boite dediee sur votre serveur mail YunoHost (par exemple `dmarc@votredomaine.tld`). Il est recommande d'utiliser cette boite uniquement pour les rapports DMARC.
-2. Pointez votre politique DMARC vers cette boite (`rua=mailto:dmarc@votredomaine.tld`).
-3. Utilisez l'hote/port IMAP et les identifiants de cette boite pendant l'installation.
+1. Créez une boîte dédiée sur votre serveur mail YunoHost (par exemple `dmarc@votredomaine.tld`). Il est recommandé d'utiliser cette boîte uniquement pour les rapports DMARC.
+2. Pointez votre politique DMARC vers cette boîte (`rua=mailto:dmarc@votredomaine.tld`).
+3. Utilisez l'hôte/port IMAP et les identifiants de cette boîte pendant l'installation.
 
-Par defaut, les messages traites sont marques comme lus. Vous pouvez aussi configurer votre serveur mail ou des regles de boite pour supprimer periodiquement les messages lus de cette boite dediee.
+Par défaut, les messages traités sont marqués comme lus. Vous pouvez aussi configurer votre serveur mail ou des règles de boîte pour supprimer périodiquement les messages lus de cette boîte dédiée.
