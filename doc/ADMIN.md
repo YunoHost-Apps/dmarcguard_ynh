@@ -8,8 +8,6 @@ Useful paths:
 
 The IMAP settings are written in `__INSTALL_DIR__/config.json`.
 
-To update IMAP credentials, edit `config.json` and restart the app:
-
-```bash
-sudo systemctl restart __ID__
-```
+Default behavior: processed messages are marked as read (`mark_as_seen=true`).
+For mailbox cleanup, you can configure server-side retention or mailbox rules to delete read messages.
+Using a mailbox dedicated only to DMARC reports is strongly recommended.
