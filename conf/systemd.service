@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/parse-dmarc --config=__INSTALL_DIR__/config.json
+ExecStart=__INSTALL_DIR__/parse-dmarc --config=__INSTALL_DIR__/config.json --metrics=false
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 Restart=on-failure
