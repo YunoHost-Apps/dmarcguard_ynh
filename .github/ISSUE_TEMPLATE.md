@@ -51,5 +51,3 @@ about: When creating a bug report, please use the following template to provide 
 - *In command line, the command to share the logs is displayed at the end of the operation and looks like `yunohost log display [log name] --share`. If you missed it, you can find the log ID of a previous operation using `yunohost log list`.*
 
 *After sharing the log, please copypaste directly the link provided by YunoHost (to help readability, no need to copypaste the entire content of the log here, just the link is enough...)*
-
-*If applicable and useful, add screenshots to help explain your problem.*
