@@ -1,0 +1,11 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/main/schemas/tests.v1.schema.json
+
+test_format = 1.0
+
+[default]
+args.imap_host = "imap.example.org"
+args.imap_port = 993
+args.imap_username = "dmarc@example.org"
+args.imap_password = "DummyPassword123!"
+args.imap_mailbox = "INBOX"
+args.imap_use_tls = true

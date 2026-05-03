@@ -1,0 +1,57 @@
+#!/bin/bash
+
+source /usr/share/yunohost/helpers
+
+ynh_abort_if_errors
+
+install_dir="$(ynh_app_setting_get --key=install_dir)"
+
+normalize_bool() {
+    if [ "$1" = "1" ] || [ "$1" = "true" ] || [ "$1" = "True" ]; then
+        echo "true"
+    else
+        echo "false"
+    fi
+}
+
+apply_runtime_config() {
+    imap_host="$(ynh_app_setting_get --key=imap_host)"
+    imap_port="$(ynh_app_setting_get --key=imap_port)"
+    imap_username="$(ynh_app_setting_get --key=imap_username)"
+    imap_password="$(ynh_app_setting_get --key=imap_password)"
+    imap_mailbox="$(ynh_app_setting_get --key=imap_mailbox)"
+    imap_use_tls="$(normalize_bool "$(ynh_app_setting_get --key=imap_use_tls)")"
+
+    ynh_config_add --template="config.json" --destination="$install_dir/config.json"
+    chmod 600 "$install_dir/config.json"
+    chown "$app:$app" "$install_dir/config.json"
+}
+
+get__imap_host() { ynh_app_setting_get --key=imap_host; }
+set__imap_host() { ynh_app_setting_set --key=imap_host --value="$imap_host"; apply_runtime_config; }
+
+get__imap_port() { ynh_app_setting_get --key=imap_port; }
+set__imap_port() { ynh_app_setting_set --key=imap_port --value="$imap_port"; apply_runtime_config; }
+
+get__imap_username() { ynh_app_setting_get --key=imap_username; }
+set__imap_username() { ynh_app_setting_set --key=imap_username --value="$imap_username"; apply_runtime_config; }
+
+get__imap_password() { ynh_app_setting_get --key=imap_password; }
+set__imap_password() {
+    if [ -n "$imap_password" ]; then
+        ynh_app_setting_set --key=imap_password --value="$imap_password"
+    fi
+    apply_runtime_config
+}
+
+get__imap_mailbox() { ynh_app_setting_get --key=imap_mailbox; }
+set__imap_mailbox() { ynh_app_setting_set --key=imap_mailbox --value="$imap_mailbox"; apply_runtime_config; }
+
+get__imap_use_tls() { ynh_app_setting_get --key=imap_use_tls; }
+set__imap_use_tls() {
+    imap_use_tls="$(normalize_bool "$imap_use_tls")"
+    ynh_app_setting_set --key=imap_use_tls --value="$imap_use_tls"
+    apply_runtime_config
+}
+
+ynh_app_config_run "$1"

@@ -1,0 +1,19 @@
+{
+  "log_level": "info",
+  "colored_logs": false,
+  "database": {
+    "path": "__DATA_DIR__/db.sqlite"
+  },
+  "imap": {
+    "host": "__IMAP_HOST__",
+    "port": __IMAP_PORT__,
+    "username": "__IMAP_USERNAME__",
+    "password": "__IMAP_PASSWORD__",
+    "mailbox": "__IMAP_MAILBOX__",
+    "use_tls": __IMAP_USE_TLS__
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": __PORT__
+  }
+}

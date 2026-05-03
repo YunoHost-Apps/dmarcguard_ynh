@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source /usr/share/yunohost/helpers
+
+ynh_systemctl --service="$app" --action=stop --log_path="/var/log/$app/$app.log"
+ynh_config_change_url_nginx
+ynh_systemctl --service="$app" --action=start --log_path="/var/log/$app/$app.log"

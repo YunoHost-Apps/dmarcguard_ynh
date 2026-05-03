@@ -1,0 +1,49 @@
+#:schema https://github.com/YunoHost/apps/raw/main/schemas/config_panel.v1.schema.json
+
+version = "1.0"
+
+[main]
+name.en = "Configuration"
+name.fr = "Configuration"
+services = ["__APP__"]
+
+    [main.imap]
+    name.en = "IMAP settings"
+    name.fr = "Parametres IMAP"
+    optional = false
+
+        [main.imap.imap_host]
+        ask.en = "IMAP host"
+        ask.fr = "Hote IMAP"
+        type = "string"
+        bind = "null"
+
+        [main.imap.imap_port]
+        ask.en = "IMAP port"
+        ask.fr = "Port IMAP"
+        type = "number"
+        bind = "null"
+
+        [main.imap.imap_username]
+        ask.en = "IMAP username"
+        ask.fr = "Nom d'utilisateur IMAP"
+        type = "string"
+        bind = "null"
+
+        [main.imap.imap_password]
+        ask.en = "IMAP password"
+        ask.fr = "Mot de passe IMAP"
+        type = "password"
+        bind = "null"
+
+        [main.imap.imap_mailbox]
+        ask.en = "IMAP mailbox"
+        ask.fr = "Boite IMAP"
+        type = "string"
+        bind = "null"
+
+        [main.imap.imap_use_tls]
+        ask.en = "Use TLS for IMAP"
+        ask.fr = "Utiliser TLS pour IMAP"
+        type = "boolean"
+        bind = "null"

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+source /usr/share/yunohost/helpers
+
+imap_host="$(ynh_app_setting_get --key=imap_host)"
+imap_port="$(ynh_app_setting_get --key=imap_port)"
+imap_username="$(ynh_app_setting_get --key=imap_username)"
+imap_password="$(ynh_app_setting_get --key=imap_password)"
+imap_mailbox="$(ynh_app_setting_get --key=imap_mailbox)"
+imap_use_tls="$(ynh_app_setting_get --key=imap_use_tls)"
+if [ "$imap_use_tls" = "1" ] || [ "$imap_use_tls" = "true" ] || [ "$imap_use_tls" = "True" ]; then
+    imap_use_tls=true
+else
+    imap_use_tls=false
+fi
+
+ynh_script_progression "Stopping service..."
+ynh_systemctl --service="$app" --action=stop --log_path="/var/log/$app/$app.log"
+
+ynh_script_progression "Upgrading binary..."
+ynh_setup_source --dest_dir="$install_dir" --keep="config.json"
+chmod +x "$install_dir/parse-dmarc"
+
+ynh_script_progression "Refreshing configuration..."
+ynh_config_add --template="config.json" --destination="$install_dir/config.json"
+chmod 600 "$install_dir/config.json"
+chown "$app:$app" "$install_dir/config.json"
+
+ynh_script_progression "Reapplying system configurations..."
+ynh_config_add_nginx
+ynh_config_add_systemd
+ynh_config_add_logrotate
+yunohost service add "$app" --description="DMARC parser and dashboard" --log="/var/log/$app/$app.log"
+mkdir -p "/var/log/$app"
+chown "$app:$app" "/var/log/$app"
+
+ynh_script_progression "Starting service..."
+ynh_systemctl --service="$app" --action=start --log_path="/var/log/$app/$app.log"
