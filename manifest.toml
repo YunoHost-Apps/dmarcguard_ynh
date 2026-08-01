@@ -6,7 +6,7 @@ id = "dmarcguard"
 name = "DMARCguard"
 description.en = "Self-hosted DMARC report parser with dashboard and IMAP ingestion."
 description.fr = "Parseur DMARC auto-heberge avec dashboard et ingestion IMAP."
-version = "1.5.3~ynh2"
+version = "1.5.5~ynh1"
 maintainers = ["rungeard"]
 
 [upstream]
@@ -75,10 +75,10 @@ ram.runtime = "150M"
     in_subdir = false
     rename = "parse-dmarc.tar.gz"
 
-    amd64.url = "https://github.com/dmarcguardhq/dmarcguard/releases/download/v1.5.3/parse-dmarc_linux_amd64.tar.gz"
-    amd64.sha256 = "323607bd7c55e651a467a724d6b0ad8dfd461879fc077c08f69f103b1322459d"
-    arm64.url = "https://github.com/dmarcguardhq/dmarcguard/releases/download/v1.5.3/parse-dmarc_linux_arm64.tar.gz"
-    arm64.sha256 = "d1bd6d6283f34c44542e52587929e1f82c6003631cc56246096848aca95f37a3"
+    amd64.url = "https://github.com/dmarcguardhq/dmarcguard/releases/download/v1.5.5/dmarcguard_linux_amd64.tar.gz"
+    amd64.sha256 = "a1549796cf8d6bf74e888d50b4fa6fcd9b371bde39aa8c3dda73494ce5dc3307"
+    arm64.url = "https://github.com/dmarcguardhq/dmarcguard/releases/download/v1.5.5/dmarcguard_linux_arm64.tar.gz"
+    arm64.sha256 = "50eca11d1534ddcc39f995d7a3dbe4b6a6eebde4923fc795ecd129913592d22b"
     autoupdate.strategy = "latest_github_release"
     autoupdate.asset.amd64 = "^(parse-dmarc|dmarcguard)_linux_amd64.tar.gz$"
     autoupdate.asset.arm64 = "^(parse-dmarc|dmarcguard)_linux_arm64.tar.gz$"
