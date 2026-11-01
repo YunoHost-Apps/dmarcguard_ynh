@@ -22,6 +22,8 @@ services = ["__APP__"]
         ask.en = "IMAP port"
         ask.fr = "Port IMAP"
         type = "number"
+        min = 1
+        max = 65535
         bind = "null"
 
         [main.imap.imap_username]
