@@ -15,6 +15,7 @@ normalize_bool() {
 }
 
 apply_runtime_config() {
+    local imap_host imap_port imap_username imap_password imap_mailbox imap_use_tls
     imap_host="$(ynh_app_setting_get --key=imap_host)"
     imap_port="$(ynh_app_setting_get --key=imap_port)"
     imap_username="$(ynh_app_setting_get --key=imap_username)"
